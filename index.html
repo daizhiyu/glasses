@@ -91,25 +91,42 @@
 
             //导航左右按钮
             var totalWidth = liWidth*liNum;
-            var mWidth = totalWidth - liWidth*5;
+            var mcount = liNum - 5;
+            // alert(mcount);return;
+            var now = 0;//小图左右移动计数器
             var lBtn = document.getElementById('left');
             var rBtn = document.getElementById('right');
-            if(mWidth){
-                // var step = 0;
-                rBtn.onclick = function(){
-                    // alert(getCurrentStyle(imgItems)['left']);return;
+            // var step = 0;
+            rBtn.onclick = function(){
+
+                if(now < mcount){
+                    now++;
                     var timeId = setInterval(function(){
                         imgItems.style.left = (parseInt(getCurrentStyle(imgItems)["left"])-1)+'px';
-                        if(getCurrentStyle(imgItems)["left"] == '-62px'){
+                        if(parseInt(getCurrentStyle(imgItems)["left"]) == -now*liWidth){
                             clearInterval(timeId);
                         }
                     },10);
-
+                    
+                    // alert(now);
+                }else{
 
                 }
-
-            }else{
-                alert('2');
+            }
+            // alert(now);
+            // var step = 0;
+            lBtn.onclick = function(){
+                if(now == 0){
+                    now = 0;
+                }else{                   
+                    now--;
+                    var timeId = setInterval(function(){
+                        imgItems.style.left = (parseInt(getCurrentStyle(imgItems)["left"])+1)+'px';
+                        if(parseInt(getCurrentStyle(imgItems)["left"]) == -now*liWidth){
+                            clearInterval(timeId);
+                        }
+                    },10);
+                }
             }
 
 
@@ -140,8 +157,8 @@
                     <li><img src="images/02.jpg" msrc="images/02-zhongtu.jpg" bsrc="images/02-datu.jpg" alt="" /></li>
                     <li><img src="images/03.jpg" msrc="images/03-zhongtu.jpg" bsrc="images/03-datu.jpg" alt="" /></li>
                     <li><img src="images/04.jpg" msrc="images/04-zhongtu.jpg" bsrc="images/04-datu.jpg" alt="" /></li>
+                    <li><img src="images/04.jpg" msrc="images/04-zhongtu.jpg" bsrc="images/04-datu.jpg" alt="" /></li>
                     <li><img src="images/05.jpg" msrc="images/05-zhongtu.jpg" bsrc="images/05-datu.jpg" alt="" /></li>
-                    <li><img src="images/06.jpg" msrc="images/06-zhongtu.jpg" bsrc="images/06-datu.jpg" alt="" /></li>
                 </ul>   
             </div>
         </div>
