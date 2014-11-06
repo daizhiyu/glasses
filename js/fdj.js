@@ -1,10 +1,10 @@
 window.onload = function(){
-    var preview = document.getElementById('preview');
-    var big = document.getElementById('img-big');
-    var bigImg = big.getElementsByTagName('img')[0];
-    var medium = document.getElementById('img-medium');
-    var mediumImg = medium.getElementsByTagName('img')[0];
-    var mark = document.getElementById('mark');
+    var preview = document.getElementById('preview');//获取中图可视区元素
+    var big = document.getElementById('img-big');//获取大图显示div元素
+    var bigImg = big.getElementsByTagName('img')[0];//大图Img元素
+    var medium = document.getElementById('img-medium');//中图div元素
+    var mediumImg = medium.getElementsByTagName('img')[0];//中图img元素
+    var mark = document.getElementById('mark');//遮罩层元素
     var detail = document.getElementById('detail');
 
     medium.onmouseover = function(){
@@ -22,7 +22,6 @@ window.onload = function(){
         var top = e.clientY - preview.offsetTop-mark.offsetHeight/2;
         var markOffsetWidth = mark.offsetWidth;
         var mediumOffsetWidth = this.offsetWidth;
-
         //判断放大镜遮罩层溢出
         if(left<0){
             left = 0;
@@ -39,8 +38,8 @@ window.onload = function(){
         //计算大图随着遮罩层移动显示的百分比
         persentX = left/(mediumOffsetWidth - markOffsetWidth);
         persentY = top/(mediumOffsetWidth - markOffsetWidth);
-        detail.style.left = -persentX*400+'px';
-        detail.style.top = -persentY*400+'px';
+        detail.style.left = -persentX*big.clientWidth+'px';
+        detail.style.top = -persentY*big.clientHeight+'px';
     }
     //小图导航
     var imgItems = document.getElementById('img-items');
@@ -106,7 +105,6 @@ window.onload = function(){
     }
     //小图标导航向右移动
     rBtn.onclick = function(){
-
         if(now < mcount){
             now++;
             var timeId = setInterval(function(){
@@ -115,7 +113,6 @@ window.onload = function(){
                     clearInterval(timeId);
                 }
             },10);
-
         }
     }
     //获取style样式兼容
